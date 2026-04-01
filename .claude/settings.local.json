@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python3 src/ui-ux-pro-max/scripts/search.py \"festival event landing page dark neon\" --domain style -n 5)",
+      "Bash(python3 src/ui-ux-pro-max/scripts/search.py \"dark neon glow electric vibrant party\" --domain color -n 5)",
+      "Bash(python3 src/ui-ux-pro-max/scripts/search.py \"bold display headline festival event\" --domain typography -n 5)",
+      "Bash(python3 src/ui-ux-pro-max/scripts/search.py \"event landing page hero CTA scroll animation\" --domain ux -n 4)",
+      "Bash(python3 src/ui-ux-pro-max/scripts/search.py \"festival community event party\" --domain landing -n 3)"
+    ]
+  }
+}
