@@ -1007,7 +1007,19 @@
     </div>
   </div>
 
-  <a href="#games" class="hero-cta reveal">🏆 &nbsp;JETZT TEILNEHMEN!</a>
+  <div id="registration-container" class="reveal">
+  <form id="olympiade-form" style="display: flex; gap: 10px; justify-content: center; align-items: center; flex-wrap: wrap;">
+    <input type="text" id="entry-name" name="entry.2000655490" placeholder="Dein Name" required 
+      style="background: rgba(255,255,255,0.05); border: 2px solid var(--neon-blue); border-radius: 50px; padding: 12px 25px; color: white; font-family: 'Chakra Petch'; outline: none; width: 280px; box-shadow: 0 0 15px rgba(0,195,255,0.2);">
+    
+    <button type="submit" class="hero-cta" style="border: none; cursor: pointer;">
+      🏆 JETZT TEILNEHMEN
+    </button>
+  </form>
+  <div id="success-message" style="display: none; color: var(--neon-yellow); font-family: 'Russo One'; font-size: 1.2rem; margin-top: 15px; text-shadow: 0 0 10px var(--neon-yellow);">
+    Wir freuen uns auf dich! 🔥
+  </div>
+</div>
 
   <!-- Scroll indicator -->
   <div class="scroll-indicator">
@@ -1291,6 +1303,35 @@ const obs = new IntersectionObserver(entries => {
 }, { threshold: 0.1 });
 
 document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+// ── ANMELDUNG LOGIK ──────────────────────────────────────────
+const registrationForm = document.getElementById('olympiade-form');
+const successMessage = document.getElementById('success-message');
+
+// DEINE ECHTE URL (Extrahiert aus deinem Link)
+const GOOGLE_FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLScSanusJRLhG5cWWH2eGpqZO0FLeDi6u009aUPeDrTUYWrERw/formResponse';
+
+registrationForm.addEventListener('submit', function(e) {
+  e.preventDefault(); 
+
+  const nameValue = document.getElementById('entry-name').value;
+  const formData = new FormData();
+  
+  // DEINE ECHTE entry.ID (2000655490)
+  formData.append('entry.2000655490', nameValue);
+
+  fetch(GOOGLE_FORM_URL, {
+    method: 'POST',
+    mode: 'no-cors',
+    body: formData
+  }).then(() => {
+    // UI Feedback: Formular weg, Nachricht her
+    registrationForm.style.display = 'none';
+    successMessage.style.display = 'block';
+  }).catch(error => {
+    console.error('Fehler:', error);
+    alert('Hoppla, das hat nicht geklappt.');
+  });
+});
 </script>
 </body>
 </html>
