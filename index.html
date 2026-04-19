@@ -1167,6 +1167,14 @@
   <div class="f-copy">Einfach nur zum Spass – bis dann! 🔥 &nbsp;·&nbsp; Made with UI/UX Pro Max</div>
 </footer>
 
+<audio id="bg-music" loop>
+  <source src="assets/music/SCHNECKENHOF.mp3" type="audio/mpeg">
+</audio>
+
+<button id="music-btn" style="position: fixed; bottom: 24px; left: 24px; z-index: 8000; width: 50px; height: 50px; border-radius: 50%; background: rgba(0, 195, 255, 0.1); border: 2px solid var(--neon-blue); color: var(--neon-blue); font-size: 1.2rem; cursor: pointer; backdrop-filter: blur(5px); box-shadow: 0 0 15px rgba(0, 195, 255, 0.3);">
+  🔈
+</button>
+
 <!-- ══════════════════ SCRIPTS ══════════════════ -->
 <script>
 // ── PARTICLE SYSTEM ────────────────────────────────────────────
@@ -1286,6 +1294,22 @@ function updateCountdown() {
 updateCountdown();
 setInterval(updateCountdown, 1000);
 
+// ── BACKGROUND MUSIC LOGIK ───────────────────────────────────
+const bgMusic = document.getElementById('bg-music');
+const musicBtn = document.getElementById('music-btn');
+
+musicBtn.addEventListener('click', () => {
+  if (bgMusic.paused) {
+    bgMusic.play();
+    musicBtn.textContent = '🔊'; // Icon ändern zu "Laut"
+    musicBtn.style.boxShadow = '0 0 30px rgba(0, 195, 255, 0.8)'; // Mehr Glow, wenn Musik läuft
+  } else {
+    bgMusic.pause();
+    musicBtn.textContent = '🔈'; // Icon ändern zu "Leise"
+    musicBtn.style.boxShadow = '0 0 15px rgba(0, 195, 255, 0.3)'; // Normaler Glow
+  }
+});
+
 // ── STICKY CTA (UX: show after scrolling past hero) ────────────
 const stickyCta = document.getElementById('sticky-cta');
 window.addEventListener('scroll', () => {
@@ -1332,6 +1356,8 @@ registrationForm.addEventListener('submit', function(e) {
     alert('Hoppla, das hat nicht geklappt.');
   });
 });
+
+
 </script>
 </body>
 </html>
