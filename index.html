@@ -76,36 +76,6 @@
       z-index: 0;
     }
 
-    /* ── STICKY CTA (UX Pro Max: sticky register button) ── */
-    #sticky-cta {
-      position: fixed;
-      bottom: 24px;
-      right: 24px;
-      z-index: 8000;
-      display: none;
-    }
-
-    #sticky-cta a {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-family: 'Russo One', sans-serif;
-      font-size: .9rem;
-      letter-spacing: .12em;
-      color: #000;
-      background: linear-gradient(90deg, var(--neon-orange), var(--neon-yellow));
-      border-radius: 50px;
-      padding: 12px 22px;
-      text-decoration: none;
-      box-shadow: 0 0 24px rgba(255,102,0,.7);
-      animation: ctaGlow 2s ease-in-out infinite;
-    }
-
-    @keyframes ctaGlow {
-      0%,100% { box-shadow: 0 0 24px rgba(255,102,0,.7); }
-      50%      { box-shadow: 0 0 44px rgba(255,230,0,1); }
-    }
-
     /* ══════════ HERO ══════════ */
     #hero {
       position: relative;
@@ -388,6 +358,171 @@
     }
 
     .hero-cta:hover { transform: scale(1.06); }
+
+    /* ── REGISTRATION FORM (UX Pro Max: Gaming-styled registration card) ── */
+    #registration-container {
+      width: 100%;
+      max-width: 640px;
+      margin: 10px auto 0;
+      padding: 28px 32px 30px;
+      border-radius: 22px;
+      background:
+        linear-gradient(135deg, rgba(124,58,237,.08) 0%, rgba(0,195,255,.06) 100%),
+        rgba(30,28,53,.55);
+      border: 1px solid rgba(124,58,237,.45);
+      box-shadow:
+        0 0 50px rgba(124,58,237,.22),
+        inset 0 0 30px rgba(0,195,255,.05);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+
+    .form-eyebrow {
+      font-family: 'Chakra Petch', sans-serif;
+      font-size: .72rem;
+      font-weight: 600;
+      letter-spacing: .38em;
+      text-transform: uppercase;
+      color: var(--neon-blue);
+      text-shadow: 0 0 12px rgba(0,195,255,.6);
+      margin-bottom: 6px;
+      text-align: center;
+    }
+
+    .form-heading {
+      font-family: 'Russo One', sans-serif;
+      font-size: clamp(1.1rem, 2.8vw, 1.5rem);
+      letter-spacing: .08em;
+      color: var(--text);
+      text-align: center;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+    }
+
+    #olympiade-form {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      align-items: stretch;
+      flex-wrap: wrap;
+    }
+
+    .input-wrap {
+      position: relative;
+      flex: 1 1 280px;
+      min-width: 0;
+      max-width: 360px;
+    }
+
+    .input-icon {
+      position: absolute;
+      left: 18px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 1rem;
+      color: var(--neon-blue);
+      pointer-events: none;
+      opacity: .85;
+      filter: drop-shadow(0 0 6px rgba(0,195,255,.7));
+    }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0,0,0,0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    #entry-name {
+      width: 100%;
+      background: rgba(15,15,35,.65);
+      border: 2px solid rgba(0,195,255,.45);
+      border-radius: 50px;
+      padding: 14px 22px 14px 46px;
+      color: var(--text);
+      font-family: 'Chakra Petch', sans-serif;
+      font-size: 1rem;
+      font-weight: 500;
+      letter-spacing: .04em;
+      outline: none;
+      box-shadow:
+        0 0 14px rgba(0,195,255,.18),
+        inset 0 0 14px rgba(0,195,255,.06);
+      transition: border-color .2s, box-shadow .2s, background .2s;
+    }
+
+    #entry-name::placeholder {
+      color: var(--text-muted);
+      opacity: .75;
+      letter-spacing: .05em;
+    }
+
+    #entry-name:hover {
+      border-color: var(--neon-blue);
+      background: rgba(15,15,35,.8);
+    }
+
+    #entry-name:focus {
+      border-color: var(--neon-blue);
+      background: rgba(15,15,35,.85);
+      box-shadow:
+        0 0 0 4px rgba(0,195,255,.15),
+        0 0 24px rgba(0,195,255,.45),
+        inset 0 0 16px rgba(0,195,255,.08);
+    }
+
+    #olympiade-form .hero-cta {
+      flex: 0 0 auto;
+      font-size: 1rem;
+      padding: 0 28px;
+      min-height: 52px;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    #olympiade-form .hero-cta:disabled {
+      opacity: .7;
+      cursor: not-allowed;
+      transform: none;
+      animation: pulseGlow 1.2s ease-in-out infinite;
+    }
+
+    @keyframes pulseGlow {
+      0%,100% { box-shadow: 0 0 22px rgba(255,102,0,.45); }
+      50%     { box-shadow: 0 0 36px rgba(255,230,0,.75); }
+    }
+
+    #success-message {
+      margin-top: 18px;
+      padding: 14px 18px;
+      border-radius: 14px;
+      background: rgba(255,230,0,.08);
+      border: 1px solid rgba(255,230,0,.35);
+      color: var(--neon-yellow);
+      font-family: 'Russo One', sans-serif;
+      font-size: 1.15rem;
+      letter-spacing: .06em;
+      text-align: center;
+      text-shadow: 0 0 12px rgba(255,230,0,.6);
+      animation: successPop .5s ease-out;
+    }
+
+    @keyframes successPop {
+      0%   { opacity: 0; transform: scale(.92); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+
+    @media (max-width: 520px) {
+      #registration-container { padding: 22px 18px 24px; }
+      #olympiade-form { gap: 10px; }
+      .input-wrap { flex: 1 1 100%; max-width: 100%; }
+      #olympiade-form .hero-cta { width: 100%; }
+    }
 
     /* Scroll Indicator */
     .scroll-indicator {
@@ -955,11 +1090,6 @@
 
 <canvas id="canvas"></canvas>
 
-<!-- sticky CTA (UX Pro Max: always visible register button) -->
-<div id="sticky-cta">
-  <a href="#games">🏆 JETZT TEILNEHMEN</a>
-</div>
-
 <!-- ══════════════════ HERO ══════════════════ -->
 <section id="hero">
 
@@ -1008,18 +1138,28 @@
   </div>
 
   <div id="registration-container" class="reveal">
-  <form id="olympiade-form" style="display: flex; gap: 10px; justify-content: center; align-items: center; flex-wrap: wrap;">
-    <input type="text" id="entry-name" name="entry.2000655490" placeholder="Dein Name" required 
-      style="background: rgba(255,255,255,0.05); border: 2px solid var(--neon-blue); border-radius: 50px; padding: 12px 25px; color: white; font-family: 'Chakra Petch'; outline: none; width: 280px; box-shadow: 0 0 15px rgba(0,195,255,0.2);">
-    
-    <button type="submit" class="hero-cta" style="border: none; cursor: pointer;">
-      🏆 JETZT TEILNEHMEN
-    </button>
-  </form>
-  <div id="success-message" style="display: none; color: var(--neon-yellow); font-family: 'Russo One'; font-size: 1.2rem; margin-top: 15px; text-shadow: 0 0 10px var(--neon-yellow);">
-    Wir freuen uns auf dich! 🔥
+    <div class="form-eyebrow">⚡ Anmeldung</div>
+    <div class="form-heading">Sei dabei — sichere dir deinen Platz</div>
+    <form id="olympiade-form" novalidate>
+      <label for="entry-name" class="sr-only">Dein Name</label>
+      <div class="input-wrap">
+        <span class="input-icon" aria-hidden="true">🎮</span>
+        <input
+          type="text"
+          id="entry-name"
+          name="entry.2000655490"
+          placeholder="Dein Name"
+          autocomplete="name"
+          required>
+      </div>
+      <button type="submit" class="hero-cta">
+        🏆 JETZT TEILNEHMEN
+      </button>
+    </form>
+    <div id="success-message" style="display: none;">
+      Wir freuen uns auf dich! 🔥
+    </div>
   </div>
-</div>
 
   <!-- Scroll indicator -->
   <div class="scroll-indicator">
@@ -1335,12 +1475,23 @@ const successMessage = document.getElementById('success-message');
 const GOOGLE_FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLScSanusJRLhG5cWWH2eGpqZO0FLeDi6u009aUPeDrTUYWrERw/formResponse';
 
 registrationForm.addEventListener('submit', function(e) {
-  e.preventDefault(); 
+  e.preventDefault();
 
-  const nameValue = document.getElementById('entry-name').value;
+  const nameInput = document.getElementById('entry-name');
+  const submitBtn = registrationForm.querySelector('button[type="submit"]');
+  const nameValue = nameInput.value.trim();
+
+  if (!nameValue) {
+    nameInput.focus();
+    return;
+  }
+
+  // Loading-State (UX: submit feedback)
+  const originalBtnText = submitBtn.textContent;
+  submitBtn.disabled = true;
+  submitBtn.textContent = '⏳ WIRD GESENDET…';
+
   const formData = new FormData();
-  
-  // DEINE ECHTE entry.ID (2000655490)
   formData.append('entry.2000655490', nameValue);
 
   fetch(GOOGLE_FORM_URL, {
@@ -1348,11 +1499,12 @@ registrationForm.addEventListener('submit', function(e) {
     mode: 'no-cors',
     body: formData
   }).then(() => {
-    // UI Feedback: Formular weg, Nachricht her
     registrationForm.style.display = 'none';
     successMessage.style.display = 'block';
   }).catch(error => {
     console.error('Fehler:', error);
+    submitBtn.disabled = false;
+    submitBtn.textContent = originalBtnText;
     alert('Hoppla, das hat nicht geklappt.');
   });
 });
