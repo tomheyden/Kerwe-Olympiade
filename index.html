@@ -1057,6 +1057,471 @@
       opacity: .4;
     }
 
+    /* ══════════ TOP NAVIGATION ══════════ */
+    #topnav {
+      position: fixed;
+      top: 14px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 8500;
+      display: flex;
+      gap: 6px;
+      padding: 6px;
+      border-radius: 50px;
+      background: rgba(15,15,35,.72);
+      border: 1px solid rgba(124,58,237,.45);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      box-shadow: 0 0 24px rgba(124,58,237,.25);
+      max-width: calc(100vw - 24px);
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+    #topnav::-webkit-scrollbar { display: none; }
+
+    #topnav a {
+      font-family: 'Chakra Petch', sans-serif;
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      text-decoration: none;
+      padding: 8px 14px;
+      border-radius: 50px;
+      white-space: nowrap;
+      transition: color .2s, background .2s, text-shadow .2s;
+    }
+
+    #topnav a:hover {
+      color: var(--neon-blue);
+      background: rgba(0,195,255,.1);
+      text-shadow: 0 0 10px var(--neon-blue);
+    }
+
+    /* UX: Anker landen nicht unter der fixen Nav */
+    .section { scroll-margin-top: 70px; }
+
+    /* ══════════ TURNIER-INFO BLOCK ══════════ */
+    .tournament-info {
+      position: relative;
+      z-index: 1;
+      margin: 0 0 44px;
+      padding: 28px 32px 26px;
+      border-radius: 18px;
+      background: linear-gradient(100deg, rgba(124,58,237,.2), rgba(0,195,255,.12));
+      border: 1px solid rgba(124,58,237,.45);
+      box-shadow: 0 0 44px rgba(124,58,237,.18);
+      text-align: center;
+    }
+
+    .tournament-info h3 {
+      font-family: 'Russo One', sans-serif;
+      font-size: clamp(1.3rem, 3vw, 1.9rem);
+      letter-spacing: .1em;
+      margin-bottom: 20px;
+      background: linear-gradient(90deg, var(--primary-lt), var(--neon-blue));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .ti-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 14px;
+      margin-bottom: 18px;
+    }
+
+    .ti-item {
+      padding: 14px 10px;
+      border-radius: 14px;
+      background: rgba(15,15,35,.45);
+      border: 1px solid rgba(255,255,255,.07);
+    }
+
+    .ti-num {
+      display: block;
+      font-family: 'Russo One', sans-serif;
+      font-size: 1.7rem;
+      color: var(--neon-yellow);
+      text-shadow: 0 0 14px var(--neon-yellow);
+      line-height: 1.1;
+    }
+
+    .ti-lbl {
+      display: block;
+      font-family: 'Chakra Petch', sans-serif;
+      font-size: .68rem;
+      font-weight: 600;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-top: 6px;
+    }
+
+    .tournament-info p {
+      font-family: 'Chakra Petch', sans-serif;
+      font-size: .9rem;
+      line-height: 1.7;
+      color: var(--text-muted);
+      letter-spacing: .04em;
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    /* ══════════ GAME ACCORDION CARDS ══════════ */
+    .games-list {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      max-width: 860px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .game-acc {
+      border-radius: 20px;
+      background: rgba(255,255,255,.03);
+      border: 1px solid rgba(255,255,255,.07);
+      overflow: hidden;
+      transition: box-shadow .25s;
+    }
+
+    .game-acc:nth-child(1) { border-color: rgba(0,195,255,.35);   box-shadow: 0 0 28px rgba(0,195,255,.12); }
+    .game-acc:nth-child(2) { border-color: rgba(255,45,155,.35);  box-shadow: 0 0 28px rgba(255,45,155,.12); }
+    .game-acc:nth-child(3) { border-color: rgba(255,102,0,.35);   box-shadow: 0 0 28px rgba(255,102,0,.12); }
+    .game-acc:nth-child(4) { border-color: rgba(255,230,0,.35);   box-shadow: 0 0 28px rgba(255,230,0,.12); }
+    .game-acc:nth-child(5) { border-color: rgba(167,139,250,.4); box-shadow: 0 0 28px rgba(167,139,250,.12); }
+
+    .game-acc:nth-child(1)[open], .game-acc:nth-child(1):hover { box-shadow: 0 0 50px rgba(0,195,255,.28); }
+    .game-acc:nth-child(2)[open], .game-acc:nth-child(2):hover { box-shadow: 0 0 50px rgba(255,45,155,.28); }
+    .game-acc:nth-child(3)[open], .game-acc:nth-child(3):hover { box-shadow: 0 0 50px rgba(255,102,0,.28); }
+    .game-acc:nth-child(4)[open], .game-acc:nth-child(4):hover { box-shadow: 0 0 50px rgba(255,230,0,.28); }
+    .game-acc:nth-child(5)[open], .game-acc:nth-child(5):hover { box-shadow: 0 0 50px rgba(167,139,250,.28); }
+
+    .game-acc summary {
+      list-style: none;
+      cursor: pointer;
+      padding: 22px 24px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .game-acc summary::-webkit-details-marker { display: none; }
+
+    .game-acc .game-icon {
+      font-size: 2.6rem;
+      margin: 0;
+      flex-shrink: 0;
+    }
+
+    .game-head {
+      flex: 1;
+      min-width: 0;
+      text-align: left;
+    }
+
+    .game-acc .game-name {
+      font-size: 1.35rem;
+      margin-bottom: 8px;
+    }
+
+    .game-acc:nth-child(1) .game-name { color: var(--neon-blue);   text-shadow: 0 0 12px var(--neon-blue); }
+    .game-acc:nth-child(2) .game-name { color: var(--neon-pink);   text-shadow: 0 0 12px var(--neon-pink); }
+    .game-acc:nth-child(3) .game-name { color: var(--neon-orange); text-shadow: 0 0 12px var(--neon-orange); }
+    .game-acc:nth-child(4) .game-name { color: var(--neon-yellow); text-shadow: 0 0 12px var(--neon-yellow); }
+    .game-acc:nth-child(5) .game-name { color: var(--primary-lt);  text-shadow: 0 0 12px var(--primary-lt); }
+
+    .game-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .g-badge {
+      font-family: 'Chakra Petch', sans-serif;
+      font-size: .64rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      padding: 3px 12px;
+      border-radius: 50px;
+      border: 1px solid;
+      white-space: nowrap;
+    }
+    .g-badge.b-format { border-color: rgba(0,195,255,.5);   color: var(--neon-blue);  background: rgba(0,195,255,.08); }
+    .g-badge.b-modus  { border-color: rgba(167,139,250,.5); color: var(--primary-lt); background: rgba(124,58,237,.12); }
+    .g-badge.b-ort    { border-color: rgba(255,230,0,.45);  color: var(--neon-yellow); background: rgba(255,230,0,.07); }
+
+    .game-chevron {
+      flex-shrink: 0;
+      font-size: 1rem;
+      color: var(--text-muted);
+      transition: transform .3s;
+    }
+    .game-acc[open] .game-chevron { transform: rotate(180deg); }
+
+    .game-rules {
+      padding: 0 24px 24px;
+      text-align: left;
+    }
+
+    .game-rules ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      border-top: 1px solid rgba(255,255,255,.08);
+      padding-top: 18px;
+    }
+
+    .game-rules li {
+      position: relative;
+      padding-left: 22px;
+      font-size: .88rem;
+      line-height: 1.65;
+      color: var(--text-muted);
+    }
+
+    .game-rules li::before {
+      content: '▸';
+      position: absolute;
+      left: 0;
+      color: var(--neon-blue);
+    }
+
+    .game-rules li.rule-win {
+      color: var(--text);
+      font-weight: 600;
+    }
+    .game-rules li.rule-win::before { content: '🏆'; font-size: .75rem; }
+
+    /* ══════════ ZEITPLAN ══════════ */
+    #zeitplan {
+      background: var(--bg);
+    }
+
+    #zeitplan::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 55% 45% at 85% 40%, rgba(255,230,0,.07) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 40% at 10% 75%, rgba(255,102,0,.08) 0%, transparent 55%);
+      z-index: 0;
+    }
+
+    #zeitplan .section-eyebrow { color: var(--neon-yellow); }
+
+    #zeitplan .section-title {
+      background: linear-gradient(90deg, var(--neon-yellow), var(--neon-orange));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      filter: drop-shadow(0 0 14px rgba(255,230,0,.4));
+    }
+
+    .timeline {
+      position: relative;
+      z-index: 1;
+      max-width: 640px;
+      margin: 0 auto;
+      padding-left: 24px;
+      border-left: 2px solid rgba(124,58,237,.5);
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+      text-align: left;
+    }
+
+    .tl-item { position: relative; }
+
+    .tl-item::before {
+      content: '';
+      position: absolute;
+      left: -31px;
+      top: 6px;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--bg);
+      border: 3px solid var(--neon-blue);
+      box-shadow: 0 0 12px var(--neon-blue);
+    }
+
+    .tl-item.tl-final::before {
+      border-color: var(--neon-yellow);
+      box-shadow: 0 0 14px var(--neon-yellow);
+    }
+
+    .tl-time {
+      font-family: 'Russo One', sans-serif;
+      font-size: .95rem;
+      letter-spacing: .08em;
+      color: var(--neon-blue);
+      text-shadow: 0 0 10px rgba(0,195,255,.5);
+    }
+
+    .tl-item.tl-final .tl-time {
+      color: var(--neon-yellow);
+      text-shadow: 0 0 10px rgba(255,230,0,.5);
+    }
+
+    .tl-label {
+      font-family: 'Chakra Petch', sans-serif;
+      font-size: .95rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-top: 2px;
+    }
+
+    .tl-sub {
+      font-family: 'Chakra Petch', sans-serif;
+      font-size: .78rem;
+      color: var(--text-muted);
+      margin-top: 2px;
+      letter-spacing: .04em;
+    }
+
+    /* ══════════ SPIELPLAN & TABELLE (Tables) ══════════ */
+    #spielplan { background: var(--bg-card); }
+
+    #spielplan::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 45% at 90% 60%, rgba(255,45,155,.08) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 40% at 10% 20%, rgba(124,58,237,.1) 0%, transparent 55%);
+      z-index: 0;
+    }
+
+    #spielplan .section-eyebrow { color: var(--neon-pink); }
+
+    #spielplan .section-title {
+      background: linear-gradient(90deg, var(--neon-pink), var(--primary-lt));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      filter: drop-shadow(0 0 14px rgba(255,45,155,.4));
+    }
+
+    #tabelle { background: var(--bg); }
+
+    #tabelle::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 45% at 10% 50%, rgba(0,195,255,.08) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 40% at 90% 80%, rgba(255,230,0,.06) 0%, transparent 55%);
+      z-index: 0;
+    }
+
+    #tabelle .section-eyebrow { color: var(--neon-blue); }
+
+    #tabelle .section-title {
+      background: linear-gradient(90deg, var(--neon-blue), var(--neon-yellow));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      filter: drop-shadow(0 0 14px rgba(0,195,255,.45));
+    }
+
+    .table-scroll {
+      position: relative;
+      z-index: 1;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,.08);
+      background: rgba(255,255,255,.02);
+      box-shadow: 0 0 34px rgba(124,58,237,.12);
+    }
+
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 720px;
+      font-family: 'Chakra Petch', sans-serif;
+      font-size: .85rem;
+      text-align: left;
+    }
+
+    .data-table th {
+      font-family: 'Russo One', sans-serif;
+      font-size: .72rem;
+      font-weight: 400;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--neon-blue);
+      text-shadow: 0 0 10px rgba(0,195,255,.4);
+      padding: 14px 16px;
+      border-bottom: 1px solid rgba(0,195,255,.25);
+      background: rgba(15,15,35,.6);
+      white-space: nowrap;
+    }
+
+    .data-table td {
+      padding: 12px 16px;
+      border-bottom: 1px solid rgba(255,255,255,.05);
+      color: var(--text);
+      white-space: nowrap;
+    }
+
+    .data-table tr:last-child td { border-bottom: none; }
+    .data-table tbody tr:hover td { background: rgba(124,58,237,.08); }
+
+    .data-table td.cell-tbd {
+      color: var(--text-muted);
+      opacity: .55;
+      letter-spacing: .1em;
+    }
+
+    .data-table td.cell-slot {
+      font-family: 'Russo One', sans-serif;
+      color: var(--neon-yellow);
+      text-shadow: 0 0 8px rgba(255,230,0,.4);
+    }
+
+    .data-table td.cell-slot small {
+      display: block;
+      font-family: 'Chakra Petch', sans-serif;
+      font-size: .7rem;
+      color: var(--text-muted);
+      text-shadow: none;
+      letter-spacing: .08em;
+    }
+
+    /* standings-spezifisch */
+    #standings-table { min-width: 480px; }
+
+    #standings-table td.cell-rank {
+      font-family: 'Russo One', sans-serif;
+      color: var(--primary-lt);
+    }
+
+    #standings-table td.cell-points {
+      font-family: 'Russo One', sans-serif;
+      color: var(--neon-yellow);
+      text-shadow: 0 0 8px rgba(255,230,0,.4);
+    }
+
+    .table-hint {
+      position: relative;
+      z-index: 1;
+      font-family: 'Chakra Petch', sans-serif;
+      font-size: .75rem;
+      letter-spacing: .08em;
+      color: var(--text-muted);
+      margin-top: 14px;
+      text-align: center;
+    }
+
     /* ── SCROLL REVEAL ── */
     .reveal {
       opacity: 0;
@@ -1069,6 +1534,16 @@
     @media (max-width: 480px) {
       .event-box { padding: 16px 24px; }
       .games-grid { grid-template-columns: 1fr; }
+      #topnav { top: 10px; }
+      #topnav a { font-size: .66rem; padding: 7px 10px; }
+      .game-acc summary { padding: 18px 16px; gap: 12px; }
+      .game-acc .game-icon { font-size: 2rem; }
+      .game-rules { padding: 0 16px 20px; }
+      .tournament-info { padding: 22px 18px 20px; }
+      .ti-grid { grid-template-columns: repeat(2, 1fr); }
+      .timeline { padding-left: 20px; }
+      .data-table { font-size: .8rem; }
+      .data-table th, .data-table td { padding: 10px 12px; }
       .countdown { gap: 8px; }
       .cd-num { min-width: 52px; padding: 8px 10px; font-size: 1.7rem; }
       .players-row { gap: 16px; }
@@ -1089,6 +1564,14 @@
 <body>
 
 <canvas id="canvas"></canvas>
+
+<!-- ══════════════════ NAVIGATION ══════════════════ -->
+<nav id="topnav">
+  <a href="#games">🎮 Spiele</a>
+  <a href="#zeitplan">🕐 Zeitplan</a>
+  <a href="#spielplan">📋 Spielplan</a>
+  <a href="#tabelle">🏆 Tabelle</a>
+</nav>
 
 <!-- ══════════════════ HERO ══════════════════ -->
 <section id="hero">
@@ -1181,33 +1664,139 @@
 
     <div class="section-eyebrow reveal">⚡ Die Events</div>
     <h2 class="section-title reveal">DIE SPIELE</h2>
-    <div class="section-time reveal">12:00 – 17:00 UHR</div>
+    <div class="section-time reveal">13:00 – 17:25 UHR</div>
 
-    <div class="games-grid">
-
-      <div class="game-card reveal">
-        <span class="game-icon">🍺🏓</span>
-        <div class="game-name">Bierpong</div>
-        <p class="game-desc">Der absolute Klassiker! Triff die Becher präzise, trink das Bier und zeig deine Skills. Party auf höchstem Niveau!</p>
+    <div class="tournament-info reveal">
+      <h3>🏟️ &nbsp;DER TURNIER-MODUS</h3>
+      <div class="ti-grid">
+        <div class="ti-item"><span class="ti-num">16</span><span class="ti-lbl">Zweierteams</span></div>
+        <div class="ti-item"><span class="ti-num">8</span><span class="ti-lbl">Matches pro Team</span></div>
+        <div class="ti-item"><span class="ti-num">2 : 0</span><span class="ti-lbl">Punkte Sieg / Niederlage</span></div>
       </div>
+      <p>Jedes Team spielt 3× Beer Pong, 2× Flunkyball, 1× Flip Cup, 1× Boccia und 1× Schwindel-Sprint. Jeder Sieg bringt 2 Punkte, eine Niederlage 0 Punkte. Am Ende steigt das <strong>Trink-Poker-Finale</strong> auf der Terrasse. 🃏</p>
+    </div>
 
-      <div class="game-card reveal">
-        <span class="game-icon">⚡🥤</span>
-        <div class="game-name">Rage Cage</div>
-        <p class="game-desc">Bouncing Cups mit voller Power! Schnelle Reflexe, pure Action. Wer verliert, trinkt – keine Gnade!</p>
-      </div>
+    <div class="games-list">
 
-      <div class="game-card reveal">
-        <span class="game-icon">⚽🍻</span>
-        <div class="game-name">Flunkyball</div>
-        <p class="game-desc">Flasche umwerfen, trinken, Sieg feiern! Das Teamspiel mit maximalem Adrenalin und bester Laune.</p>
-      </div>
+      <details class="game-acc reveal">
+        <summary>
+          <span class="game-icon">🍺🏓</span>
+          <div class="game-head">
+            <div class="game-name">Beer Pong</div>
+            <div class="game-badges">
+              <span class="g-badge b-format">2 vs 2</span>
+              <span class="g-badge b-modus">Best of 1 · Durchgang</span>
+              <span class="g-badge b-ort">3 Tische</span>
+            </div>
+          </div>
+          <span class="game-chevron">▼</span>
+        </summary>
+        <div class="game-rules">
+          <ul>
+            <li><strong>Material:</strong> 10 Becher pro Team als Pyramide (4-3-2-1), 1 Wasserbecher pro Team, 2 Bälle.</li>
+            <li><strong>Start:</strong> Ein Spieler pro Team wirft gleichzeitig an – dabei schauen sich beide in die Augen und zählen bis 3. Wer zuerst trifft, dessen Team beginnt.</li>
+            <li>Teams werfen abwechselnd, jedes Teammitglied hat pro Zug einen Wurf. Getroffene Becher werden ausgetrunken und weggestellt.</li>
+            <li><strong>Umstellen (Re-Rack):</strong> Einmalig bei 5 verbleibenden Bechern.</li>
+            <li><strong>Airball-Regel:</strong> Bei 3 Airballs eines Teams muss es einen eigenen Becher entfernen, den das Gegnerteam auswählt. Gilt nicht beim letzten Becher. Der Zähler wird danach zurückgesetzt.</li>
+            <li><strong>Bombe:</strong> Landen beide Bälle im selben Zug im selben Becher, werden 3 Becher entfernt (die Werfer wählen aus) und es gibt Balls Back (Bälle zurück an die Werfer).</li>
+            <li>Treffen beide Bälle im selben Zug in unterschiedliche Becher, gibt es nur Balls Back. Funktioniert nur einmal im selben Zug.</li>
+            <li><strong>Trickshot:</strong> Rollt der Ball auf dem Tisch über die Mittellinie zurück und holt sich der Werfer den Ball selbst, gibt es einen zusätzlichen Trickshot (z.B. hinter dem Rücken).</li>
+            <li class="rule-win">Sieger: Wer zuerst alle gegnerischen Becher abgeräumt hat.</li>
+          </ul>
+        </div>
+      </details>
 
-      <div class="game-card reveal">
-        <span class="game-icon">🎲❓</span>
-        <div class="game-name">...und mehr</div>
-        <p class="game-desc">Weitere Spiele folgen – lass dich überraschen! Details werden rechtzeitig bekannt gegeben. TBD!</p>
-      </div>
+      <details class="game-acc reveal">
+        <summary>
+          <span class="game-icon">🥤🔄</span>
+          <div class="game-head">
+            <div class="game-name">Flip Cup</div>
+            <div class="game-badges">
+              <span class="g-badge b-format">2 vs 2</span>
+              <span class="g-badge b-modus">Best of 3</span>
+              <span class="g-badge b-ort">Terrasse</span>
+            </div>
+          </div>
+          <span class="game-chevron">▼</span>
+        </summary>
+        <div class="game-rules">
+          <ul>
+            <li>6 gefüllte Becher pro Team in einer Reihe an der Tischkante, die Teams stehen sich gegenüber.</li>
+            <li>Auf „Los": Das erste Teammitglied trinkt seinen Becher leer, stellt ihn an den Tischrand und flippt ihn von unten auf den Kopf. Nur 1 Finger erlaubt, nicht festhalten.</li>
+            <li>Steht der Becher kopfüber, ist das zweite Teammitglied dran. Immer abwechselnd – jeder Spieler trinkt und flippt 3 Becher.</li>
+            <li class="rule-win">Sieger: Das Team, das zuerst alle 6 Becher durch hat. Best of 3 – wer zuerst 2 Durchgänge gewinnt.</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="game-acc reveal">
+        <summary>
+          <span class="game-icon">🎯⚪</span>
+          <div class="game-head">
+            <div class="game-name">Boccia</div>
+            <div class="game-badges">
+              <span class="g-badge b-format">2 vs 2</span>
+              <span class="g-badge b-modus">Best of 5</span>
+              <span class="g-badge b-ort">Oberer Garten</span>
+            </div>
+          </div>
+          <span class="game-chevron">▼</span>
+        </summary>
+        <div class="game-rules">
+          <ul>
+            <li>Schere, Stein, Papier entscheidet, wer beginnt. Das Startteam wirft das Schweinchen.</li>
+            <li>Jeder der 4 Spieler wirft genau einmal, die Teams abwechselnd.</li>
+            <li><strong>Rundensieger:</strong> Das Team des Spielers mit der nähesten Kugel.</li>
+            <li><strong>Trinkregel:</strong> Nach jeder Runde nach Abstand zum Schweinchen – näheste Kugel 0 Schlücke, dann 1, 2, 3 Schlücke.</li>
+            <li class="rule-win">Sieger: Best of 5 – wer zuerst 3 Runden gewinnt.</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="game-acc reveal">
+        <summary>
+          <span class="game-icon">🌀🏃</span>
+          <div class="game-head">
+            <div class="game-name">Schwindel-Sprint</div>
+            <div class="game-badges">
+              <span class="g-badge b-format">2 vs 2</span>
+              <span class="g-badge b-modus">Best of 3</span>
+              <span class="g-badge b-ort">Schräger Garten</span>
+            </div>
+          </div>
+          <span class="game-chevron">▼</span>
+        </summary>
+        <div class="game-rules">
+          <ul>
+            <li>2 Bälle als Drehpunkt, 4 gefüllte Becher in 5 Metern Entfernung (1 pro Spieler). Zwei Bahnen – beide Teams laufen gleichzeitig.</li>
+            <li>Spieler 1 dreht sich 5× um den Ball, läuft zum Becher, trinkt ihn leer, läuft zurück und klatscht ab. Dann Spieler 2 mit demselben Ablauf.</li>
+            <li class="rule-win">Sieger: Das Team, dessen zweiter Läufer zuerst zurück an der Startlinie ist. Best of 3.</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="game-acc reveal">
+        <summary>
+          <span class="game-icon">⚽🍻</span>
+          <div class="game-head">
+            <div class="game-name">Flunkyball</div>
+            <div class="game-badges">
+              <span class="g-badge b-format">4 vs 4</span>
+              <span class="g-badge b-modus">Best of 1</span>
+              <span class="g-badge b-ort">Unterer Garten</span>
+            </div>
+          </div>
+          <span class="game-chevron">▼</span>
+        </summary>
+        <div class="game-rules">
+          <ul>
+            <li>Zwei Zweierteams bilden zusammen eine Viererseite. Grundlinien 10 Meter auseinander, Flasche in der Mitte, jeder Spieler hat ein Bier an seiner Grundlinie.</li>
+            <li>Die Seiten werfen abwechselnd auf die Flasche. Fällt sie, trinkt die werfende Seite, bis die Gegner den Ball geholt und die Flasche aufgestellt haben, hinter der Linie stehen und „Stopp" rufen.</li>
+            <li>Leeres Bier per Kopfüber-Probe anzeigen – danach wirft der Spieler nicht mehr mit.</li>
+            <li class="rule-win">Sieger: Die Seite, bei der zuerst alle 4 Spieler ihr Bier leer haben. Beide Zweierteams der Siegerseite bekommen je 2 Punkte.</li>
+          </ul>
+        </div>
+      </details>
 
     </div>
 
@@ -1242,8 +1831,89 @@
   </div>
 </section>
 
+<!-- ══════════════════ ZEITPLAN ══════════════════ -->
+<section id="zeitplan" class="section">
+  <div class="section-inner">
+
+    <div class="section-eyebrow reveal">🕐 Der Ablauf</div>
+    <h2 class="section-title reveal">ZEITPLAN</h2>
+    <div class="section-time reveal">SAMSTAG, 1. AUGUST 2026</div>
+
+    <div class="timeline reveal">
+      <div class="tl-item">
+        <div class="tl-time">13:00 – 13:15</div>
+        <div class="tl-label">👋 Begrüßung + Auslosung</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">13:15 – 14:35</div>
+        <div class="tl-label">🎮 Slots 1–4</div>
+        <div class="tl-sub">Alle Stationen laufen parallel</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">14:35 – 15:05</div>
+        <div class="tl-label">🧃 Pause</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">15:05 – 16:25</div>
+        <div class="tl-label">🎮 Slots 5–8</div>
+      </div>
+      <div class="tl-item tl-final">
+        <div class="tl-time">16:30 – 17:10</div>
+        <div class="tl-label">🃏 Trink-Poker-Finale</div>
+        <div class="tl-sub">Terrasse</div>
+      </div>
+      <div class="tl-item tl-final">
+        <div class="tl-time">17:10 – 17:25</div>
+        <div class="tl-label">🏆 Siegerehrung</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">ab 17:00</div>
+        <div class="tl-label">🎧 House Musik</div>
+        <div class="tl-sub">Entspannter Ausklang – siehe unten</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════════════ SPIELPLAN ══════════════════ -->
+<section id="spielplan" class="section">
+  <div class="section-inner">
+
+    <div class="section-eyebrow reveal">📋 Wer spielt wo</div>
+    <h2 class="section-title reveal">SPIELPLAN</h2>
+    <div class="section-time reveal">8 SLOTS · 7 STATIONEN</div>
+
+    <div class="table-scroll reveal">
+      <table class="data-table" id="schedule-table">
+        <!-- wird aus data/schedule.js generiert -->
+      </table>
+    </div>
+    <p class="table-hint">👉 Auf dem Handy seitlich wischen · Die Paarungen werden am Turniertag nach der Auslosung eingetragen.</p>
+
+  </div>
+</section>
+
+<!-- ══════════════════ LIVE-TABELLE ══════════════════ -->
+<section id="tabelle" class="section">
+  <div class="section-inner">
+
+    <div class="section-eyebrow reveal">🏆 Die Rangliste</div>
+    <h2 class="section-title reveal">TABELLE</h2>
+    <div class="section-time reveal">SIEG = 2 PUNKTE · NIEDERLAGE = 0 PUNKTE</div>
+
+    <div class="table-scroll reveal">
+      <table class="data-table" id="standings-table">
+        <!-- wird aus data/standings.js generiert -->
+      </table>
+    </div>
+    <p class="table-hint">Die Tabelle wird im Laufe des Turniertags nach jedem Slot aktualisiert.</p>
+
+  </div>
+</section>
+
 <!-- wave divider -->
-<div class="wave-div" style="background:#1E1C35;">
+<div class="wave-div" style="background:#0F0F23;">
   <svg viewBox="0 0 1440 70" preserveAspectRatio="none" fill="none">
     <path d="M0 0 Q360 70 720 30 Q1080 -10 1440 50 L1440 70 L0 70 Z" fill="#1a0a00"/>
   </svg>
@@ -1316,6 +1986,8 @@
 </button>
 
 <!-- ══════════════════ SCRIPTS ══════════════════ -->
+<script src="data/schedule.js"></script>
+<script src="data/standings.js"></script>
 <script>
 // ── PARTICLE SYSTEM ────────────────────────────────────────────
 const canvas = document.getElementById('canvas');
@@ -1409,7 +2081,7 @@ setInterval(() => {
 
 // ── COUNTDOWN TIMER ────────────────────────────────────────────
 function updateCountdown() {
-  const target = new Date('2026-08-01T12:00:00');
+  const target = new Date('2026-08-01T13:00:00');
   const now    = new Date();
   const diff   = target - now;
 
@@ -1452,9 +2124,65 @@ musicBtn.addEventListener('click', () => {
 
 // ── STICKY CTA (UX: show after scrolling past hero) ────────────
 const stickyCta = document.getElementById('sticky-cta');
-window.addEventListener('scroll', () => {
-  stickyCta.style.display = window.scrollY > window.innerHeight * 0.6 ? 'block' : 'none';
-}, { passive: true });
+if (stickyCta) {
+  window.addEventListener('scroll', () => {
+    stickyCta.style.display = window.scrollY > window.innerHeight * 0.6 ? 'block' : 'none';
+  }, { passive: true });
+}
+
+// ── SPIELPLAN (aus data/schedule.js) ───────────────────────────
+function esc(s) {
+  const d = document.createElement('div');
+  d.textContent = s;
+  return d.innerHTML;
+}
+
+function renderSchedule() {
+  const table = document.getElementById('schedule-table');
+  if (!table || typeof SCHEDULE_SLOTS === 'undefined') return;
+
+  let html = '<thead><tr><th>Slot</th>';
+  SCHEDULE_STATIONS.forEach(st => { html += `<th>${esc(st)}</th>`; });
+  html += '</tr></thead><tbody>';
+
+  SCHEDULE_SLOTS.forEach(row => {
+    html += `<tr><td class="cell-slot">Slot ${row.slot}<small>${esc(row.zeit)}</small></td>`;
+    row.matches.forEach(m => {
+      const tbd = m === 'TBD';
+      html += `<td${tbd ? ' class="cell-tbd"' : ''}>${esc(m)}</td>`;
+    });
+    html += '</tr>';
+  });
+
+  table.innerHTML = html + '</tbody>';
+}
+renderSchedule();
+
+// ── LIVE-TABELLE (aus data/standings.js) ───────────────────────
+function renderStandings() {
+  const table = document.getElementById('standings-table');
+  if (!table || typeof STANDINGS === 'undefined') return;
+
+  const sorted = [...STANDINGS].sort((a, b) =>
+    b.punkte - a.punkte || b.siege - a.siege || a.team.localeCompare(b.team)
+  );
+
+  let html = '<thead><tr><th>Platz</th><th>Team</th><th>Spiele</th><th>Siege</th><th>Punkte</th></tr></thead><tbody>';
+
+  sorted.forEach((t, i) => {
+    const rank = i + 1;
+    const tbd = t.team.startsWith('TBD');
+    html += `<tr>` +
+      `<td class="cell-rank">${rank}</td>` +
+      `<td${tbd ? ' class="cell-tbd"' : ''}>${esc(t.team)}</td>` +
+      `<td>${t.spiele}</td>` +
+      `<td>${t.siege}</td>` +
+      `<td class="cell-points">${t.punkte}</td></tr>`;
+  });
+
+  table.innerHTML = html + '</tbody>';
+}
+renderStandings();
 
 // ── SCROLL REVEAL (IntersectionObserver) ───────────────────────
 const obs = new IntersectionObserver(entries => {
