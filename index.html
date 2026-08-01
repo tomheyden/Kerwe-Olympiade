@@ -1410,6 +1410,13 @@
       filter: drop-shadow(0 0 14px rgba(255,45,155,.4));
     }
 
+    .row-pause td {
+      color: var(--neon-yellow);
+      font-weight: 700;
+      letter-spacing: .05em;
+      background: rgba(255,230,0,.05);
+    }
+
     #tabelle { background: var(--bg); }
 
     #tabelle::before {
@@ -1567,9 +1574,9 @@
 
 <!-- ══════════════════ NAVIGATION ══════════════════ -->
 <nav id="topnav">
+  <a href="#spielplan">📋 Spielplan</a>
   <a href="#games">🎮 Spiele</a>
   <a href="#zeitplan">🕐 Zeitplan</a>
-  <a href="#spielplan">📋 Spielplan</a>
   <a href="#tabelle">🏆 Tabelle</a>
 </nav>
 
@@ -1637,6 +1644,24 @@
   <svg id="hero-wave" viewBox="0 0 1440 80" preserveAspectRatio="none" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path d="M0 80 Q360 20 720 55 Q1080 90 1440 30 L1440 80 Z" fill="#1E1C35"/>
   </svg>
+</section>
+
+<!-- ══════════════════ SPIELPLAN ══════════════════ -->
+<section id="spielplan" class="section">
+  <div class="section-inner">
+
+    <div class="section-eyebrow reveal">📋 Wer spielt wo</div>
+    <h2 class="section-title reveal">SPIELPLAN</h2>
+    <div class="section-time reveal">8 SLOTS · 7 STATIONEN</div>
+
+    <div class="table-scroll reveal">
+      <table class="data-table" id="schedule-table">
+        <!-- wird aus data/schedule.js generiert -->
+      </table>
+    </div>
+    <p class="table-hint">👉 Auf dem Handy seitlich wischen</p>
+
+  </div>
 </section>
 
 <!-- ══════════════════ DIE SPIELE ══════════════════ -->
@@ -1853,24 +1878,6 @@
         <div class="tl-sub">Entspannter Ausklang – siehe unten</div>
       </div>
     </div>
-
-  </div>
-</section>
-
-<!-- ══════════════════ SPIELPLAN ══════════════════ -->
-<section id="spielplan" class="section">
-  <div class="section-inner">
-
-    <div class="section-eyebrow reveal">📋 Wer spielt wo</div>
-    <h2 class="section-title reveal">SPIELPLAN</h2>
-    <div class="section-time reveal">8 SLOTS · 7 STATIONEN</div>
-
-    <div class="table-scroll reveal">
-      <table class="data-table" id="schedule-table">
-        <!-- wird aus data/schedule.js generiert -->
-      </table>
-    </div>
-    <p class="table-hint">👉 Auf dem Handy seitlich wischen · Die Paarungen werden am Turniertag nach der Auslosung eingetragen.</p>
 
   </div>
 </section>
@@ -2133,6 +2140,9 @@ function renderSchedule() {
       html += `<td${tbd ? ' class="cell-tbd"' : ''}>${esc(m)}</td>`;
     });
     html += '</tr>';
+    if (row.pauseAfter) {
+      html += `<tr class="row-pause"><td class="cell-slot">Pause</td><td colspan="${SCHEDULE_STATIONS.length}">🧃 Pause</td></tr>`;
+    }
   });
 
   table.innerHTML = html + '</tbody>';

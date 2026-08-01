@@ -16,12 +16,12 @@ const SCHEDULE_STATIONS = [
 ];
 
 const SCHEDULE_SLOTS = [
-  { slot: 1, zeit: '13:15', matches: ['TBD', 'TBD', 'TBD', 'TBD', 'TBD', 'TBD', 'TBD'] },
-  { slot: 2, zeit: '13:35', matches: ['TBD', 'TBD', 'TBD', 'TBD', 'TBD', 'TBD', 'TBD'] },
-  { slot: 3, zeit: '13:55', matches: ['TBD', 'TBD', 'TBD', 'TBD', 'TBD', 'TBD', 'TBD'] },
-  { slot: 4, zeit: '14:15', matches: ['TBD', 'TBD', 'TBD', 'TBD', 'TBD', 'TBD', 'TBD'] },
-  { slot: 5, zeit: '15:05', matches: ['TBD', 'TBD', 'TBD', 'TBD', 'TBD', 'TBD', 'TBD'] },
-  { slot: 6, zeit: '15:25', matches: ['TBD', 'TBD', 'TBD', 'TBD', 'TBD', 'TBD', 'TBD'] },
-  { slot: 7, zeit: '15:45', matches: ['TBD', 'TBD', 'TBD', 'TBD', 'TBD', 'TBD', 'TBD'] },
-  { slot: 8, zeit: '16:05', matches: ['TBD', 'TBD', 'TBD', 'TBD', 'TBD', 'TBD', 'TBD'] }
+  { slot: 1, zeit: '13:15', matches: ['T6–T1', 'T13–T14', 'T7–T2', 'T16–T10', 'T12–T5', 'T9–T15', 'T3+T8 vs T11+T4'] },
+  { slot: 2, zeit: '13:35', matches: ['T5–T3', 'T4–T10', 'T8–T9', 'T11–T6', 'T1–T2', 'T14–T7', 'T15+T16 vs T13+T12'] },
+  { slot: 3, zeit: '13:55', matches: ['T11–T16', 'T12–T15', 'T9–T3', 'T7–T1', 'T8–T4', 'T5–T13', 'T2+T10 vs T6+T14'] },
+  { slot: 4, zeit: '14:15', matches: ['T10–T11', 'T2–T15', 'T12–T14', 'T8–T3', 'T16–T13', 'T6–T4', 'T9+T1 vs T7+T5'], pauseAfter: true },
+  { slot: 5, zeit: '15:05', matches: ['T6–T5', 'T4–T16', 'T13–T7', 'T9–T12', 'T15–T11', 'T8–T10', 'T3+T14 vs T1+T2'] },
+  { slot: 6, zeit: '15:25', matches: ['T1–T15', 'T3–T13', 'T10–T9', 'T4–T14', 'T6–T7', 'T12–T2', 'T11+T8 vs T5+T16'] },
+  { slot: 7, zeit: '15:45', matches: ['T8–T14', 'T2–T16', 'T5–T4', 'T13–T15', 'T10–T3', 'T1–T11', 'T9+T6 vs T12+T7'] },
+  { slot: 8, zeit: '16:05', matches: ['T1–T12', 'T8–T6', 'T7–T11', 'T5–T2', 'T14–T9', 'T3–T16', 'T10+T13 vs T15+T4'] }
 ];
