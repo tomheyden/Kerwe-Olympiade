@@ -1529,6 +1529,42 @@
       text-align: center;
     }
 
+    /* ── TEAMLISTE ── */
+    .team-legend {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 10px;
+      margin-top: 22px;
+    }
+
+    .team-chip {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 14px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,.08);
+      background: rgba(255,255,255,.02);
+      font-family: 'Chakra Petch', sans-serif;
+      font-size: .85rem;
+      color: var(--text);
+    }
+
+    .team-chip .team-nr {
+      font-family: 'Russo One', sans-serif;
+      font-size: .8rem;
+      color: var(--neon-pink);
+      text-shadow: 0 0 8px rgba(255,45,155,.4);
+      min-width: 32px;
+    }
+
+    .team-chip.team-open .team-names {
+      color: var(--text-muted);
+      opacity: .55;
+    }
+
     /* ── SCROLL REVEAL ── */
     .reveal {
       opacity: 0;
@@ -1660,6 +1696,10 @@
       </table>
     </div>
     <p class="table-hint">👉 Auf dem Handy seitlich wischen</p>
+
+    <div class="team-legend reveal" id="team-legend">
+      <!-- wird aus data/schedule.js generiert -->
+    </div>
 
   </div>
 </section>
@@ -2148,6 +2188,19 @@ function renderSchedule() {
   table.innerHTML = html + '</tbody>';
 }
 renderSchedule();
+
+// ── TEAMLISTE (aus data/schedule.js) ───────────────────────────
+function renderTeamLegend() {
+  const el = document.getElementById('team-legend');
+  if (!el || typeof SCHEDULE_TEAMS === 'undefined') return;
+
+  el.innerHTML = SCHEDULE_TEAMS.map(t => {
+    const open = t.namen.includes('?');
+    return `<div class="team-chip${open ? ' team-open' : ''}">` +
+      `<span class="team-nr">T${t.nr}</span><span class="team-names">${esc(t.namen)}</span></div>`;
+  }).join('');
+}
+renderTeamLegend();
 
 // ── LIVE-TABELLE (aus data/standings.js) ───────────────────────
 function renderStandings() {

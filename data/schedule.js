@@ -15,6 +15,26 @@ const SCHEDULE_STATIONS = [
   'Flunkyball'
 ];
 
+// Teamliste — T-Nummer → Spieler. '?' = noch unklar, einfach ersetzen.
+const SCHEDULE_TEAMS = [
+  { nr: 1,  namen: 'Arne + Jaylen' },
+  { nr: 2,  namen: 'Marius + Max B.' },
+  { nr: 3,  namen: 'Felix + Björn O.' },
+  { nr: 4,  namen: 'Dustin + Max' },
+  { nr: 5,  namen: 'Arne M. + Stephano' },
+  { nr: 6,  namen: 'Luca + Julia' },
+  { nr: 7,  namen: 'Jörn + Morten' },
+  { nr: 8,  namen: 'Luca Gohl' },
+  { nr: 9,  namen: 'Laris + Mauni' },
+  { nr: 10, namen: 'Björn R. + Julia' },
+  { nr: 11, namen: 'Yannick + Philipp Silke' },
+  { nr: 12, namen: 'Sembach + Tom' },
+  { nr: 13, namen: 'Simon + Anton' },
+  { nr: 14, namen: 'Johannes + Julia' },
+  { nr: 15, namen: 'Philipp + Adrian' },
+  { nr: 16, namen: 'Buebs' }
+];
+
 const SCHEDULE_SLOTS = [
   { slot: 1, zeit: '13:15', matches: ['T6–T1', 'T13–T14', 'T7–T2', 'T16–T10', 'T12–T5', 'T9–T15', 'T3+T8 vs T11+T4'] },
   { slot: 2, zeit: '13:35', matches: ['T5–T3', 'T4–T10', 'T8–T9', 'T11–T6', 'T1–T2', 'T14–T7', 'T15+T16 vs T13+T12'] },
